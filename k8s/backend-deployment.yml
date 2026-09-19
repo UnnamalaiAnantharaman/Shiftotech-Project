@@ -17,7 +17,7 @@ spec:
       - name: docker-secret
       containers:
       - name: backend
-        image: pritam44/coding-cloud-backend:latest
+        image: unnadocker/coding-cloud-backend:latest
         imagePullPolicy: Always
       ##  resources:
       ##    requests:

@@ -12,7 +12,7 @@ pipeline {
             agent { label 'docker' }
             steps {
                 echo "Checking out Frontend Code"
-                git url:'https://github.com/Pritam-Phadtare/Shiftotech-Project.git', branch:'master'
+                git url:'https://github.com/UnnamalaiAnantharaman/Shiftotech-Project.git', branch:'master'
                 echo "Checkout Completed"
             }
         }
@@ -30,7 +30,7 @@ pipeline {
                         dir('frontend') {
                             sh '''
                               echo "Build Started"
-                              docker build -t pritam44/coding-cloud-frontend:${BUILD_NUMBER} .
+                              docker build -t unnadocker/coding-cloud-frontend:${BUILD_NUMBER} .
                               echo "Build Completed"
                             '''
                         }
@@ -38,7 +38,7 @@ pipeline {
                             docker.withRegistry("https://index.docker.io/v1/", "${DOCKER_CREDENTIALS_ID}") {
                             sh '''
                              echo "Pushing Image to Dockerhub"
-                             docker push pritam44/coding-cloud-frontend:${BUILD_NUMBER}
+                             docker push unnadocker/coding-cloud-frontend:${BUILD_NUMBER}
                              echo "Image Pushed Successfully"
                             '''
                           }
@@ -52,7 +52,7 @@ pipeline {
                     steps {
                         sh '''
                           echo "Deployment Update Initiated"
-                          kubectl set image deployment frontend-deployment frontend=pritam44/coding-cloud-frontend:${BUILD_NUMBER} -n coding-cloud
+                          kubectl set image deployment frontend-deployment frontend=unnadocker/coding-cloud-frontend:${BUILD_NUMBER} -n coding-cloud
                           echo "Deployment Update Completed"
                         '''
                     }

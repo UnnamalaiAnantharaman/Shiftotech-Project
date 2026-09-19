@@ -21,7 +21,7 @@ const courseData: Record<string, CourseData> = {
     title: "AWS/DevOps",
     description: "Master cloud infrastructure and deployment automation with AWS and modern DevOps practices",
     duration: "3 Months (12 weeks)",
-    trainer: "Pritam Phadtare",
+    trainer: "unnadocker Phadtare",
     targetAudience: [
       "Software developers looking to expand into DevOps",
       "System administrators transitioning to cloud",

@@ -304,7 +304,7 @@ Two separate Jenkinsfiles, one per service, both following the same pattern:
 ```
 1. Checkout SRC         (docker agent) — git pull from master
 2. changeset guard      — skip if no changes in frontend/** or backend/**
-3. Build Docker Image   (docker agent) — docker build -t pritam44/<service>:${BUILD_NUMBER}
+3. Build Docker Image   (docker agent) — docker build -t unnadocker/<service>:${BUILD_NUMBER}
 4. Push to Docker Hub   (docker agent) — docker push using 'dockerhub-credentials'
 5. Update Deployment    (k8s-master agent) — kubectl set image ... -n coding-cloud
 post/always:            docker image prune -a -f + cleanWs()
@@ -344,8 +344,8 @@ kubectl apply -f k8s/HPA.yml
 
 | Workload | Replicas | Image | Service Type | Exposed Port |
 |---|---|---|---|---|
-| `frontend-deployment` | 2 | `pritam44/coding-cloud-frontend:latest` | ClusterIP | 90 → pod:80 |
-| `backend-deployment` | 2 | `pritam44/coding-cloud-backend:latest` | ClusterIP | 5000 |
+| `frontend-deployment` | 2 | `unnadocker/coding-cloud-frontend:latest` | ClusterIP | 90 → pod:80 |
+| `backend-deployment` | 2 | `unnadocker/coding-cloud-backend:latest` | ClusterIP | 5000 |
 | `nginx-deployment` | 2 | `nginx:latest` | **NodePort** | 31000 → pod:80 |
 
 ### Nginx Routing (ConfigMap)
@@ -517,7 +517,7 @@ resource "aws_instance" "docker" {
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/Pritam-Phadtare/Shiftotech-Project.git
+git clone https://github.com/unnadocker-Phadtare/Shiftotech-Project.git
 cd Shiftotech-Project
 ```
 
@@ -551,4 +551,4 @@ docker run -d -p 80:80 coding-cloud-frontend
 
 ---
 
-Made with ❤️ by **Pritam Phadtare**
+Made with ❤️ by **unnadocker Phadtare**
